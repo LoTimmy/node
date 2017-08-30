@@ -15,7 +15,6 @@
         * [async](async.md)
         * [await](await.md)
         * [bench-rest](bench-rest.md)
-        * [botframework](botframework.md)
         * [bower](bower.md)
         * [cache-storage](cache-storage.md)
         * [child_process](child_process.md)
