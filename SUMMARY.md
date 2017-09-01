@@ -67,6 +67,7 @@
         * [xml2js](xml2js.md)
         * [xmorse](xmorse.md)
         * [xregexp](xregexp.md)
+        * [yarn](yarn.md)
         * [zeromq](zeromq.md)
         * [zhutil](zhutil.md)
     * [hapi.js](hapijs.md)
