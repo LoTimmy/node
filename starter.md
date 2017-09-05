@@ -27,6 +27,7 @@ shell> nvm install --lts=boron
 shell> nvm install v0.12.0
 shell> nvm install v4.2.2
 shell> nvm install v6.1.0
+shell> nvm install v8.4.0
 
 shell> nvm uninstall v4.2.2
 shell> nvm uninstall v6.1.0
@@ -371,14 +372,19 @@ var alsoOk = "String contains 'single' quotes or apostrophe"
 - `費氏數列`
 - `費波那契數列`
 
-F~0~ = 0
-F~1~ = 1
-F~n~ = F~n-1~ + F~n-2~ (n≧2)
+---
+
+- $$F_0 = 0$$
+- $$F_1 = 1$$
+- $$F_n = F_{n-1} + F_{n-2}$$ (n≧2)
+- $$F_{n-2} = F_n - F_{n-1}$$
 
 用文字來說，就是`費氏數列`由0和1開始，之後的費波那契系數就是由之前的兩數相加而得出。
 首幾個費波那契系數是： **0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233……**
 
 ![](http://i.imgur.com/szD2xKA.png)
+
+$$\frac{1}{1},\frac{2}{1},\frac{3}{2},\frac{5}{3},\frac{8}{5},\frac{13}{8},\frac{21}{13},\frac{34}{21},\frac{55}{34},$$…
 
 ```
 2÷1=2
@@ -395,6 +401,7 @@ F~n~ = F~n-1~ + F~n-2~ (n≧2)
 377÷233=1.618025751
 610÷377=1.618037135
 ```
+
 ```
 1×1=1
 2×2=4
@@ -481,4 +488,12 @@ console.log(sequence.next().value);     // 8
 console.log(sequence.next().value);     // 13
 console.log(sequence.next().value);     // 21
 ```
+---
 
+`等比數列`
+
+- 1,2,4,8,16,32,64,… `公比` `q` = `2`
+- 1,-1,1,-1,1,-1,… `公比`= `-1`
+- 3,3,3,3,3,… `公比` = `1`
+
+`等比數列`
