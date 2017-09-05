@@ -1,11 +1,14 @@
+![](https://i.imgur.com/t1nmuUG.png)
+
 ```js
 new Promise(function(resolve, reject) {});
 ```
 
+- `pending` `擱置中`: initial state, neither `fulfilled` nor `rejected`.
+- `fulfilled` `已經完成`: meaning that the operation completed successfully.
+- `rejected` `已拒絕`: meaning that the operation failed.
 
-- `pending`: initial state, neither `fulfilled` nor `rejected`.
-- `fulfilled`: meaning that the operation completed successfully.
-- `rejected`: meaning that the operation failed.
+`resolve` `解析`
 
 ```js
 const myFirstPromise = new Promise((resolve, reject) => {
