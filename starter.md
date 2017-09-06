@@ -126,10 +126,51 @@ var answer = 42, counter, numpages = 10;
 var myarray = new Array();
 ```
 
+`Template Strings`
+
 ```js
 var mynumber = 99;
 console.log(`my favorite number is: ${mynumber}`);
 ```
+
+```js
+var name = "Bob";
+var str = `Hello ${name}, how are you this fine ${partOfDay()}?`;
+console.log(str);
+
+function partOfDay() {
+  var hour = new Date().getHours();
+
+  if (hours <= 12) {
+    return "morning";
+  } else if (hours <= 5) {
+    return "afternoon";
+  } else {
+    return "evening";
+  }
+}
+```
+
+```js
+function buildURL(strArray, ...valArray) {
+  var newUrl = strArray[0] + "ja-ja" + "/" + valArray[1] + "/" + valArray[2];
+
+  return newUrl;
+}
+
+var lang = "en-us";
+var a = "library";
+var b = "dn771551.aspx";
+
+// Call the tagged template function.
+var url = buildURL`http://msdn.microsoft.com/${lang}/${a}/${b}`;
+
+console.log(url);
+```
+
+#### :books: 參考網站：
+- [範本字串 (JavaScript)](https://msdn.microsoft.com/zh-tw/library/dn858580(v=vs.94).aspx)
+- [Template Strings](https://docs.microsoft.com/en-us/scripting/javascript/advanced/template-strings-javascript)
 
 ### `常數` (`Constant`) {#const}
 
@@ -202,6 +243,56 @@ function letTest() {
 - [const](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const)
 - https://docs.microsoft.com/en-us/scripting/javascript/advanced/variable-scope-javascript
 
+---
+
+### (`Classes`) {#class}
+
+```js
+class Rectangle {
+  constructor(height, width) {
+    this.height = height;
+    this.width = width;
+  }
+
+  get area() {
+    return this.calcArea();
+  }
+
+  calcArea() {
+    return this.height * this.width;
+  }
+}
+
+const square = new Rectangle(10, 10);
+
+console.log(square.area);
+```
+
+```js
+class Animal {
+  constructor(name) {
+    this.name = name;
+  }
+
+  speak() {
+    console.log(this.name + " makes a noise.");
+  }
+}
+
+class Dog extends Animal {
+  speak() {
+    console.log(this.name + " barks.");
+  }
+}
+
+var d = new Dog("Mitzie");
+d.speak(); // Mitzie barks.
+```
+
+#### :books: 參考網站：
+- [Classes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes)
+
+---
 
 ### `事件` (`Events`) {#events}
 
@@ -258,6 +349,31 @@ myEmitter.emit('sayHello', 'Eric');
 `箭頭函數` (`Arrow Function`)
 
 ```js
+function ([param[, param]]) {
+  statements
+}
+
+([param[, param]]) => {
+  statements
+}
+```
+
+```js
+(param) => {}
+param => {}
+
+(param1, param2) => {}
+param1, param2 => {}
+
+() => {}
+
+param1, param2 => {
+    return param1 + param2;
+  };
+param1, param2 => param1 + param2;
+```
+
+```js
 var a = [
   'Hydrogen',
   'Helium',
@@ -271,6 +387,58 @@ console.log(a2); // logs [8, 6, 7, 9]
 var a3 = a.map(s => s.length);
 console.log(a3); // logs [8, 6, 7, 9]
 ```
+
+```js
+var myFunction = () => {};
+```
+
+#### :books: 參考網站：
+- [Functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions)
+- [Functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)
+
+---
+
+###  (`Rest parameters`) {#rest_parameters}
+
+```js
+function f(a, b, ...theArgs) {
+  // ...
+}
+```
+
+```js
+function f(a, b) {
+  var args = Array.prototype.slice.call(arguments, f.length);
+
+  // …
+}
+
+function f(a, b, ...args) {
+  // …
+}
+```
+
+```js
+function fun1(...theArgs) {
+  console.log(theArgs.length);
+}
+
+fun1();  // 0
+fun1(5); // 1
+fun1(5, 6, 7); // 3
+```
+
+```js
+(param1, param2, ...rest) => { statements }
+```
+
+#### :books: 參考網站：
+- [Rest parameters](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters)
+
+---
+
+Spread_operator
+- [Spread_operator](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_operator)
 
 ---
 
