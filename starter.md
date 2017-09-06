@@ -203,7 +203,7 @@ function letTest() {
 - https://docs.microsoft.com/en-us/scripting/javascript/advanced/variable-scope-javascript
 
 
-### Events {#events}
+### `事件` (`Events`) {#events}
 
 ```js
 var EventEmitter = require('events').EventEmitter;
@@ -253,7 +253,9 @@ myEmitter.emit('sayHello', 'Eric');
 ```
 ---
 
-### Arrow functions {#Arrow_functions}
+### `箭頭函數` (`Arrow functions`) {#Arrow_functions}
+
+`箭頭函數` (`Arrow Function`)
 
 ```js
 var a = [
@@ -340,7 +342,10 @@ var magicWords = [ 'abracadabra'
   , somethingElse
 ```
 
-#### `Quotes`
+#### `Quotes` {#quotes}
+
+- Double quotes (") `雙引號 (")`
+- Single quotes (') `單引號 (')`
 
 ```js
 var ok = 'String contains "double" quotes'
@@ -361,6 +366,39 @@ var alsoOk = "String contains 'single' quotes or apostrophe"
 - [coding-style](https://docs.npmjs.com/misc/coding-style)
 - [camel-case](https://capitalizemytitle.com/camel-case/)
 - [all-lower-hyphen-css-case](http://en.toolpage.org/tool/kebabcase)
+
+---
+
+### Recursion {#recursion}
+
+`Recursion` `遞迴`
+
+`遞迴`是一種重要的程式設計技巧，可以**使函式呼叫其本身**。
+階乘計算就是一個例子。 數字之階乘 n 是藉由乘以 1 * 2 * 3 *… n 來計算。
+
+```js
+"use strict";
+function factorial(num) {
+  // If the number is less than 0, reject it.
+  if (num < 0) {
+    return -1;
+  } else if (num == 0) {
+    // If the number is 0, its factorial is 1.
+    return 1;
+  }
+  var tmp = num;
+  while (num-- > 2) {
+    tmp *= num;
+  }
+  return tmp;
+}
+
+var result = factorial(8);
+console.log(result);
+```
+
+#### :books: 參考網站：
+- [遞迴 (JavaScript)](https://msdn.microsoft.com/zh-tw/library/wwbyhkx4(v=vs.94).aspx)
 
 ---
 
