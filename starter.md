@@ -56,7 +56,7 @@ shell> nvm install v4.2 --reinstall-packages-from=iojs
 #### :books: 參考網站：
 - [nvm](https://github.com/creationix/nvm)
 
-### Hello world 範例 {#hello-world}
+### Hello world 範例 {#helloWorld}
 
 建立名為 `hello.js` 的檔案，並新增下列程式碼：
 
@@ -289,6 +289,30 @@ var d = new Dog("Mitzie");
 d.speak(); // Mitzie barks.
 ```
 
+```js
+class Cat {
+  constructor(name) {
+    this.name = name;
+  }
+
+  speak() {
+    console.log(this.name + " makes a noise.");
+  }
+}
+
+class Lion extends Cat {
+  speak() {
+    super.speak();
+    console.log(this.name + " roars.");
+  }
+}
+
+var l = new Lion("Fuzzy");
+l.speak();
+// Fuzzy makes a noise.
+// Fuzzy roars.
+```
+
 #### :books: 參考網站：
 - [Classes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes)
 
@@ -344,7 +368,7 @@ myEmitter.emit('sayHello', 'Eric');
 ```
 ---
 
-### `箭頭函數` (`Arrow functions`) {#Arrow_functions}
+### `箭頭函數` (`Arrow functions`) {#arrowFunctions}
 
 `箭頭函數` (`Arrow Function`)
 
@@ -432,6 +456,16 @@ fun1(5, 6, 7); // 3
 (param1, param2, ...rest) => { statements }
 ```
 
+`arguments`
+
+```js
+(function() {
+  for (let argument of arguments) {
+    console.log(argument);
+  }
+})(1, 2, 3);
+```
+
 #### :books: 參考網站：
 - [Rest parameters](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/rest_parameters)
 
@@ -471,7 +505,13 @@ console.log(myObj);
 
 ---
 
-### for...of {#for...of}
+### for...of {#forOf}
+
+```js
+for (variable of iterable) {
+  statement
+}
+```
 
 ```js
 let iterable = [10, 20, 30];
@@ -485,12 +525,31 @@ for (let value of iterable) {
 // 31
 ```
 
+```js
+let arr = ["fred", "tom", "bob"];
+
+for (let i of arr) {
+  console.log(i);
+}
+```
+
+```js
+var m = new Map();
+m.set(1, "black");
+m.set(2, "red");
+
+for (var n of m) {
+  console.log(n);
+}
+```
+
 #### :books: 參考網站：
 - [for...of](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/for...of)
+- [for...of](https://msdn.microsoft.com/zh-tw/library/dn858238(v=vs.94).aspx)
 
 ---
 
-### coding-style {#coding-style}
+### coding-style {#codingStyle}
 
 `coding-style`
 
@@ -703,3 +762,8 @@ console.log(sequence.next().value);     // 21
 - 3,3,3,3,3,… `公比` = `1`
 
 `等比數列`
+
+---
+
+`科學記號`格式會以指數表示法顯示數字，以 E+n 來取代部分的數字，其中 E (代表指數) 會將其前面的數字乘以 10，再將乘積乘 n 次方。例如，兩位小數的科學記號格式會將 12345678901 顯示為 1.23E+10，也就是 1.23 乘以 10 的 10 次方。
+
