@@ -438,10 +438,15 @@ console.timeEnd('100-elements');
 > 函數f(x) = x * 2可匿名地表達為x -> x * 2
 > (x -> x * 2)(2)以`JavaScript`來表達則為function(x) {return x * 2;}(2)
 
+`IIFE` `Immediately Invoked Function Expressions`
+
 ```js
 (function() {
 })();
 ```
+
+#### :books: 參考網站：
+- [IIFE](https://developer.mozilla.org/en-US/docs/Glossary/IIFE)
 
 ```js
 function(num) { return num * num; };
