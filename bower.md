@@ -2,6 +2,7 @@
 
 ```
 shell> npm install -g bower
+shell> yarn global add bower
 ```
 
 `Install with Bower`
