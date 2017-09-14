@@ -183,6 +183,13 @@ _.chain([1, 2, 3]).reverse().value(); // [3, 2, 1]
 
 console.log(_.capitalize("foo Bar"));
 console.log(_.titleize("my name is epeli"));
+
+_.mixin({
+  capitalize: function(string) {
+    return string.charAt(0).toUpperCase() + string.substring(1).toLowerCase();
+  }
+});
+_("fabio").capitalize();
 ```
 
 #### :books: 參考網站：
