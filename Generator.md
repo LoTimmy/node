@@ -22,7 +22,8 @@ console.log(g.next().value); // 3
 
 ```js
 "use strict";
-function factorial(num) {
+let factorial = num => {
+// function factorial(num) {
   // If the number is less than 0, reject it.
   if (num < 0) {
     return -1;
