@@ -16,6 +16,7 @@
         * [modules](modules.md)
     * [手冊](guide.md)
     * [npm](npm.md)
+        * [AsyncFunction](AsyncFunction.md)
         * [產生器 (Generator)](Generator.md)
         * [Promise](Promise.md)
         * [Taiwan](Taiwan.md)
