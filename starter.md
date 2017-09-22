@@ -767,3 +767,13 @@ console.log(sequence.next().value);     // 21
 
 `科學記號`格式會以指數表示法顯示數字，以 E+n 來取代部分的數字，其中 E (代表指數) 會將其前面的數字乘以 10，再將乘積乘 n 次方。例如，兩位小數的科學記號格式會將 12345678901 顯示為 1.23E+10，也就是 1.23 乘以 10 的 10 次方。
 
+---
+
+```js
+var numFiles = files.length;
+
+for (var i = 0, numFiles = files.length; i < numFiles; i++) {
+  var file = files[i];
+  ..
+}
+```
