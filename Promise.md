@@ -12,10 +12,13 @@ var promise = new Promise(function(resolve, reject) { ... });
 promise.then(onCompleted, onRejected);
 promise.catch(onRejected)
 
-Promise.resolve(x)
-Promise.reject(r);
-
+Promise.resolve(someValue) // fulfilled
+Promise.reject("failure reason"); //rejected
 ```
+
+
+
+
 
 `參數`
 
@@ -166,6 +169,19 @@ var doSomething = function(value) {
   return Promise.resolve('Success!');
 };
 ```
+
+```js
+var p1 = Promise.resolve(3);
+var p2 = 1337;
+var p3 = new Promise((resolve, reject) => {
+  setTimeout(resolve, 100, 'foo');
+}); 
+
+Promise.all([p1, p2, p3]).then(values => { 
+  console.log(values); // [3, 1337, "foo"] 
+});
+```
+
 
 #### :books: 參考網站：
 - https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise
