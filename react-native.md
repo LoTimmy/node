@@ -44,40 +44,17 @@ export ANDROID_SDK_ROOT=/usr/local/share/android-sdk
 export ANDROID_HOME=/usr/local/share/android-sdk
 ```
 
-![](https://facebook.github.io/react-native/releases/0.23/img/AndroidSDK1.png)
-![](https://facebook.github.io/react-native/releases/0.23/img/AndroidSDK2.png)
-
----
-
 #### :books: 參考網站：
 - https://facebook.github.io/react-native/
 - https://facebook.github.io/react-native/releases/0.23/docs/android-setup.html
 - https://developer.android.com/studio/command-line/avdmanager.html
 - https://developer.android.com/studio/command-line/sdkmanager.html
-
----
-
-### Hello World
-
-`index.ios.js`
-`index.android.js`
-
-```js
-import React, { Component } from "react";
-import { AppRegistry, Text } from "react-native";
-
-export default class HelloWorldApp extends Component {
-  render() {
-    return <Text>Hello world!</Text>;
-  }
-}
-
-AppRegistry.registerComponent("AwesomeProject", () => HelloWorldApp);
-```
+- https://facebook.github.io/react-native/docs/running-on-device.html
 
 ---
 
 ```js
+"use strict";
 import React, { Component } from "react";
 import { AppRegistry, Image } from "react-native";
 
@@ -91,15 +68,17 @@ export default class Bananas extends Component {
   }
 }
 
-AppRegistry.registerComponent("AwesomeProject", () => Bananas);
+AppRegistry.registerComponent("MyApplication", () => Bananas);
 ```
+
 ---
 
 ```js
+"use strict";
 import React, { Component } from "react";
 import { AppRegistry, StyleSheet, Text, View } from "react-native";
 
-export default class AwesomeProject extends Component {
+export default class MyApplication extends Component {
   render() {
     return (
       <View style={styles.container}>
@@ -135,5 +114,289 @@ const styles = StyleSheet.create({
   }
 });
 
-AppRegistry.registerComponent("AwesomeProject", () => AwesomeProject);
+AppRegistry.registerComponent("MyApplication", () => MyApplication);
 ```
+---
+
+```
+import { View, Text, Image } from 'react-native'
+import { Card, ListItem, Button } from 'react-native-elements'
+```
+---
+
+```
+shell> yarn add react-native-elements
+```
+
+```js
+"use strict";
+import { Text, Avatar, Button } from "react-native-elements";
+
+<Button title="BUTTON" />
+
+<Button raised icon={{ name: "cached" }} title="BUTTON WITH ICON" />
+
+<Button
+  raised
+  icon={{ name: "home", size: 32 }}
+  buttonStyle={{ backgroundColor: "red", borderRadius: 10 }}
+  textStyle={{ textAlign: "center" }}
+  title={`Welcome to\nReact Native Elements`}
+/>
+```
+
+#### :books: 參考網站：
+- https://github.com/react-native-training/react-native-elements
+- https://react-native-training.github.io/react-native-elements/API/buttons/
+
+---
+
+```js
+import { StyleSheet } from "react-native";
+var styles = StyleSheet.create({
+  container: {
+    borderRadius: 4,
+    borderWidth: 0.5,
+    borderColor: "#d6d7da"
+  },
+  title: {
+    fontSize: 19,
+    fontWeight: "bold"
+  },
+  activeTitle: {
+    color: "red"
+  }
+});
+```
+
+#### :books: 參考網站：
+- https://facebook.github.io/react-native/docs/stylesheet.html
+
+---
+
+```
+shell> yarn add react-native-google-static-map
+```
+
+```js
+"use strict";
+import GoogleStaticMap from "react-native-google-static-map";
+
+var locationProps = {
+  latitude: "25.079264",
+  longitude: "121.482652",
+  zoom: 16,
+  size: { width: 300, height: 550 },
+  apiKey: ""
+};
+
+export default class MyApplication extends Component {
+  render() {
+    return <GoogleStaticMap style={styles.map} {...locationProps} />;
+  }
+}
+
+AppRegistry.registerComponent("MyApplication", () => MyApplication);
+```
+
+#### :books: 參考網站：
+- https://github.com/yelled3/react-native-google-static-map
+
+---
+
+```js
+"use strict";
+import React, { Component } from "react";
+import { AppRegistry, Text, View } from "react-native";
+
+class Blink extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { showText: true };
+
+    // Toggle the state every second
+    setInterval(() => {
+      this.setState(previousState => {
+        return { showText: !previousState.showText };
+      });
+    }, 1000);
+  }
+
+  render() {
+    let display = this.state.showText ? this.props.text : " ";
+    return <Text>{display}</Text>;
+  }
+}
+
+export default class BlinkApp extends Component {
+  render() {
+    return (
+      <View>
+        <Blink text="I love to blink" />
+        <Blink text="Yes blinking is so great" />
+        <Blink text="Why did they ever take this out of HTML" />
+        <Blink text="Look at me look at me look at me" />
+      </View>
+    );
+  }
+}
+
+AppRegistry.registerComponent("MyApplication", () => BlinkApp);
+```
+---
+
+```js
+class MyView extends Component {
+  constructor(props) {
+    super(props);
+  }
+  handleClick(e) {}
+  render() {
+    return;
+  }
+}
+```
+
+---
+
+```js
+import React, { Component } from "react";
+import { AppRegistry, Text, View } from "react-native";
+
+class Greeting extends Component {
+  render() {
+    return <Text>Hello {this.props.name}!</Text>;
+  }
+}
+
+export default class LotsOfGreetings extends Component {
+  render() {
+    return (
+      <View style={{ alignItems: "center" }}>
+        <Greeting name="Rexxar" />
+        <Greeting name="Jaina" />
+        <Greeting name="Valeera" />
+      </View>
+    );
+  }
+}
+
+AppRegistry.registerComponent("MyApplication", () => LotsOfGreetings);
+```
+```
+class CustomButton extends React.Component {
+  // ...
+}
+
+CustomButton.defaultProps = {
+  color: 'blue'
+};
+
+  render() {
+    return <CustomButton /> ; // props.color will be set to blue
+  }
+
+```
+
+---
+
+`MyScene.js`
+```js
+import React, { Component } from "react";
+import { View, Text } from "react-native";
+
+export default class MyScene extends Component {
+  static propTypes = {
+    title: React.PropTypes.string
+  };
+  static defaultProps = {
+    title: "MyScene"
+  };
+
+  render() {
+    return (
+      <View>
+        <Text>Hi! My name is {this.props.title}.</Text>
+      </View>
+    );
+  }
+}
+```
+
+```js
+import React, { Component } from 'react';
+import { AppRegistry, Text, View } from "react-native";
+
+import MyScene from './MyScene';
+
+class YoDawgApp extends Component {
+  render() {
+    return (
+      <MyScene />
+    )
+  }
+}
+
+AppRegistry.registerComponent('MyApplication', () => YoDawgApp);
+```
+
+---
+
+```js
+import DeviceInfo from "react-native-device-info";
+
+{DeviceInfo.getUniqueID()}
+{DeviceInfo.getManufacturer()}
+{DeviceInfo.getBrand()}
+{DeviceInfo.getModel()}
+{DeviceInfo.getDeviceId()}
+{DeviceInfo.getSystemName()}
+{DeviceInfo.getSystemVersion()}
+{DeviceInfo.getDeviceName()}
+{DeviceInfo.getUserAgent()}
+{DeviceInfo.getDeviceLocale()}
+{DeviceInfo.getDeviceCountry()}
+{DeviceInfo.getTimezone()}
+```
+
+#### :books: 參考網站：
+- https://github.com/rebeccahughes/react-native-device-info
+
+
+
+---
+
+
+```
+shell> adb devices
+shell> adb kill-server
+shell> adb start-server
+```
+```
+List of devices attached
+6675dfa	device
+```
+
+
+---
+
+`MyApplication/android/app/src/main/res`
+`MyApplication/ios/MyApplication.xcodeproj`
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
