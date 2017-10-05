@@ -245,7 +245,7 @@ function letTest() {
 
 ---
 
-### (`Classes`) {#class}
+### 類別 (`Classes`) {#class}
 
 ```js
 class Rectangle {
@@ -315,6 +315,124 @@ l.speak();
 
 #### :books: 參考網站：
 - [Classes](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Classes)
+
+---
+
+### 解構賦值 (`Destructuring`)
+
+```js
+var a, b, rest;
+[a, b] = [10, 20];
+console.log(a); // 10
+console.log(b); // 20
+
+[a, b, ...rest] = [10, 20, 30, 40, 50];
+console.log(a); // 10
+console.log(b); // 20
+console.log(rest); // [30, 40, 50]
+
+({ a, b } = { a: 10, b: 20 });
+console.log(a); // 10
+console.log(b); // 20
+
+({ a, b, ...rest } = { a: 10, b: 20, c: 30, d: 40 });
+console.log(a); // 10
+console.log(b); // 20
+console.log(rest); // {c: 30, d: 40}
+```
+
+```js
+var x = [1, 2, 3, 4, 5];
+var [y, z] = x;
+console.log(y); // 1
+console.log(z); // 2
+
+// Array destructuring
+var foo = ["one", "two", "three"];
+var [one, two, three] = foo;
+console.log(one); // "one"
+console.log(two); // "two"
+console.log(three); // "three"
+
+// Array destructuring
+var [a, ...b] = [1, 2, 3];
+console.log(a); // 1
+console.log(b); // [2, 3]
+
+// Object destructuring
+var o = { p: 42, q: true };
+var { p, q } = o;
+console.log(p); // 42
+console.log(q); // true
+
+// Assigning to new variable names
+var o = { p: 42, q: true };
+var { p: foo, q: bar } = o;
+console.log(foo); // 42
+console.log(bar); // true
+```
+
+```js
+var people = [
+  {
+    name: "Mike Smith",
+    family: {
+      mother: "Jane Smith",
+      father: "Harry Smith",
+      sister: "Samantha Smith"
+    },
+    age: 35
+  },
+  {
+    name: "Tom Jones",
+    family: {
+      mother: "Norah Jones",
+      father: "Richard Jones",
+      brother: "Howard Jones"
+    },
+    age: 25
+  }
+];
+
+for (var { name: n, family: { father: f } } of people) {
+  console.log("Name: " + n + ", Father: " + f);
+}
+
+// "Name: Mike Smith, Father: Harry Smith"
+// "Name: Tom Jones, Father: Richard Jones"
+```
+
+```js
+function userId({ id }) {
+  return id;
+}
+
+function whois({ displayName, fullName: { firstName: name } }) {
+  console.log(displayName + " is " + name);
+}
+
+var user = {
+  id: 42,
+  displayName: "jdoe",
+  fullName: {
+    firstName: "John",
+    lastName: "Doe"
+  }
+};
+
+console.log("userId: " + userId(user)); // "userId: 42"
+whois(user); // "jdoe is John"
+```
+
+```js
+const foo = { 'fizz-buzz': true };
+const { 'fizz-buzz': fizzBuzz } = foo;
+
+console.log(fizzBuzz); // "true"
+```
+
+#### :books: 參考網站：
+- [Destructuring assignment](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
 
 ---
 
@@ -776,35 +894,3 @@ for (var i = 0, numFiles = files.length; i < numFiles; i++) {
 }
 ```
 
----
-
-```js
-var a, b, rest;
-[a, b] = [10, 20];
-console.log(a); // 10
-console.log(b); // 20
-
-[a, b, ...rest] = [10, 20, 30, 40, 50];
-console.log(a); // 10
-console.log(b); // 20
-console.log(rest); // [30, 40, 50]
-
-({ a, b } = { a: 10, b: 20 });
-console.log(a); // 10
-console.log(b); // 20
-
-({ a, b, ...rest } = { a: 10, b: 20, c: 30, d: 40 });
-console.log(a); // 10
-console.log(b); // 20
-console.log(rest); // {c: 30, d: 40}
-```
-
-```js
-var x = [1, 2, 3, 4, 5];
-var [y, z] = x;
-console.log(y); // 1
-console.log(z); // 2
-```
-
-#### :books: 參考網站：
-- [Destructuring assignment](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
