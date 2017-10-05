@@ -647,8 +647,6 @@ console.log(result);
 用文字來說，就是`費氏數列`由0和1開始，之後的費波那契系數就是由之前的兩數相加而得出。
 首幾個費波那契系數是： **0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233……**
 
-![](http://i.imgur.com/szD2xKA.png)
-
 $$\frac{1}{1},\frac{2}{1},\frac{3}{2},\frac{5}{3},\frac{8}{5},\frac{13}{8},\frac{21}{13},\frac{34}{21},\frac{55}{34},$$…
 
 ```
@@ -777,3 +775,36 @@ for (var i = 0, numFiles = files.length; i < numFiles; i++) {
   ..
 }
 ```
+
+---
+
+```js
+var a, b, rest;
+[a, b] = [10, 20];
+console.log(a); // 10
+console.log(b); // 20
+
+[a, b, ...rest] = [10, 20, 30, 40, 50];
+console.log(a); // 10
+console.log(b); // 20
+console.log(rest); // [30, 40, 50]
+
+({ a, b } = { a: 10, b: 20 });
+console.log(a); // 10
+console.log(b); // 20
+
+({ a, b, ...rest } = { a: 10, b: 20, c: 30, d: 40 });
+console.log(a); // 10
+console.log(b); // 20
+console.log(rest); // {c: 30, d: 40}
+```
+
+```js
+var x = [1, 2, 3, 4, 5];
+var [y, z] = x;
+console.log(y); // 1
+console.log(z); // 2
+```
+
+#### :books: 參考網站：
+- [Destructuring assignment](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Destructuring_assignment)
