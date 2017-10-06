@@ -61,10 +61,6 @@ shell> node --v8-options
 ```
 
 ---
-```js
-'use strict';
-```
----
 
 **布林值 (Boolean)**
 ```js

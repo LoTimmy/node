@@ -18,6 +18,9 @@
 - `回呼` (`Callback`)，當實作程式出現許多重複流程，僅小部份需要特定實作時，可以將重複流程實作為樣版，而特定實作由呼叫者提供回呼物件或函式，例如對`JavaScript`的陣列排序可以寫為[1, 3, 2, 5, 4].sort(function(a, b) { return a - b; })。
 - `NW.js`為一結合`Node.js`與`Chromium`專案的`JavaScript`應用程式開發框架，可用來打造支援`Windows`、`Mac OS X`與`Linux`的應用程式，有別於瀏覽器對`JavaScript`程式碼的沙箱執行限制，`NW.js`移除了相關的限制，並允許程式直接與作業系統互動。`NW.js`除了允許程式在不同的平台上運作之外，也讓開發人員更容易把網路程式轉成桌面程式。
 - `NW.js`的最大優勢在於它所需的`.Net`或`Java`運行環境都已經安裝在各個系統上了。
+- `嚴格模式` (`Strict Mode`)
+- `承諾` (`Promise`)
+- `詞法作用域` (`Lexical Block Scoping`)
 
 - https://www.npmjs.com/package/nodemon
 - https://www.npmjs.com/package/async

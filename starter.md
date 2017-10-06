@@ -125,8 +125,9 @@ var name = "Thomas Jefferson";
 var answer = 42, counter, numpages = 10;  
 var myarray = new Array();
 ```
+---
 
-`Template Strings`
+### 樣版字串 (`Template Strings`)
 
 ```js
 var mynumber = 99;
@@ -216,24 +217,24 @@ var area = pi * (radius * radius); // Area 面積
 > 使用 `let` 來宣告變數，其範圍限於宣告所在的區塊。
 
 ```js
-'use strict';
+"use strict";
 
 function varTest() {
   var x = 31;
   if (true) {
-    var x = 71;  // same variable!
-    console.log(x);  // 71
+    var x = 71; // same variable!
+    console.log(x); // 71
   }
-  console.log(x);  // 71
+  console.log(x); // 71
 }
 
 function letTest() {
   let x = 31;
   if (true) {
-    let x = 71;  // different variable
-    console.log(x);  // 71
+    let x = 71; // different variable
+    console.log(x); // 71
   }
-  console.log(x);  // 31
+  console.log(x); // 31
 }
 ```
 
@@ -242,6 +243,14 @@ function letTest() {
 - [let 陳述式 (JavaScript)](https://msdn.microsoft.com/zh-tw/library/dn263046(v=vs.94).aspx)
 - [const](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/const)
 - https://docs.microsoft.com/en-us/scripting/javascript/advanced/variable-scope-javascript
+
+---
+
+### `嚴格模式` (`Strict Mode`) {#strict}
+
+```js
+'use strict';
+```
 
 ---
 
@@ -318,7 +327,7 @@ l.speak();
 
 ---
 
-### 解構賦值 (`Destructuring`)
+### 解構賦值 (`Destructuring`) {#daifoP4n}
 
 ```js
 var a, b, rest;
