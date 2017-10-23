@@ -4,18 +4,29 @@
 shell> mas install 497799835
 
 shell> brew cask install java
+shell> brew cask install java8
 shell> brew cask install android-sdk
 shell> brew cask install android-studio
 ```
 
 ```
+shell> touch ~/.android/repositories.cfg
+shell> sdkmanager --list
 shell> sdkmanager "system-images;android-25;google_apis;x86_64"
+shell> sdkmanager "system-images;android-24;default;x86"
 
 shell> avdmanager create avd -n test -k "system-images;android-25;google_apis;x86_64"
 Auto-selecting single ABI x86_64========] 100% Fetch remote repository...
-Do you wish to create a custom hardware profile? [no]
+Do you wish to create a custom hardware profile? [no] no
+
+yes
+
+shell> avdmanager create avd -n test -k "system-images;android-24;default;x86"
 
 shell> avdmanager list avd
+
+shell> touch ~/.android/advancedFeatures.ini
+HVF = off
 
 shell> emulator -help
 shell> emulator -list-avds
