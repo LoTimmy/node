@@ -252,6 +252,9 @@ function letTest() {
 'use strict';
 ```
 
+#### :books: 參考網站：
+- https://msdn.microsoft.com/zh-tw/library/br230269(v=vs.94).aspx
+
 ---
 
 ### 類別 (`Classes`) {#class}
@@ -546,6 +549,7 @@ var myFunction = () => {};
 #### :books: 參考網站：
 - [Functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions)
 - [Functions](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/function)
+- https://msdn.microsoft.com/zh-tw/library/yh6c50h7(v=vs.94).aspx
 
 ---
 
@@ -903,3 +907,9 @@ for (var i = 0, numFiles = files.length; i < numFiles; i++) {
 }
 ```
 
+---
+
+```js
+var radius = 5;
+var circleArea = Math.PI * radius * radius;
+```
