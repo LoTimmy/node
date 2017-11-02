@@ -1,3 +1,5 @@
+![](https://i.imgur.com/2RPPgjo.png)
+
 ### 安裝 {#installing}
 
 ```
