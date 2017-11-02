@@ -9,12 +9,26 @@ shell> apt-get install nodejs
 
 ```
 shell> brew install nvm
+shell> command -v nvm 
 ```
 
 ```
 shell> curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
+shell> curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.6/install.sh | bash
 shell> wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.32.1/install.sh | bash
+shell> wget -qO- https://raw.githubusercontent.com/creationix/nvm/v0.33.6/install.sh | bash
 shell> echo "source ~/.nvm/nvm.sh" >> .bashrc
+```
+
+```
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+```
+
+```
+$HOME/.nvm/alias/lts
+$NVM_DIR/alias/lts
 ```
 
 ```
@@ -22,8 +36,10 @@ shell> nvm ls-remote
 shell> nvm ls-remote --lts
 
 shell> nvm install --lts
-shell> nvm install --lts=argon
+shell> nvm install --lts=carbon
 shell> nvm install --lts=boron
+shell> nvm install --lts=argon
+
 shell> nvm install v0.12.0
 shell> nvm install v4.2.2
 shell> nvm install v6.1.0
@@ -35,12 +51,14 @@ shell> nvm uninstall v6.1.0
 shell> nvm use --lts
 shell> nvm use --lts=argon
 shell> nvm use --lts=boron
+shell> nvm use --lts=carbon
 
 shell> nvm ls
 shell> nvm alias default 0.12.0
 shell> nvm alias default 4.2.2
-shell> nvm alias default lts/argon
+shell> nvm alias default lts/carbon
 shell> nvm alias default lts/boron
+shell> nvm alias default lts/argon
 ```
 
 ```
@@ -106,7 +124,6 @@ function doSomething() {}
 var f = function() {};
 f();
 var myFunc = function() {};
-
 
 var text = null;
 
@@ -501,6 +518,56 @@ myEmitter.emit('sayHello', 'Eric');
 ### `箭頭函數` (`Arrow functions`) {#arrowFunctions}
 
 `箭頭函數` (`Arrow Function`)
+
+```js
+function () {};
+//Using ECMAScript 2015 arrow notation
+() => {};
+
+function foo() {};
+//Using ECMAScript 2015 arrow notation
+const foo = () => {};
+
+function addSquares(a,b) {
+  function square(x) {
+    return x * x;
+  }
+  return square(a) + square(b);
+};
+//Using ECMAScript 2015 arrow notation
+const addSquares = (a,b) => {
+  const square = x => x*x;
+  return square(a) + square(b);
+};
+
+
+function loop(x) {
+  if (x >= 10)
+    return;
+  loop(x + 1);
+};
+//Using ECMAScript 2015 arrow notation
+const loop = x => {
+  if (x >= 10)
+    return;
+  loop(x + 1);
+};
+
+// IIFE
+/* Immediately Invoked Function Expressions (IIFE) */
+(function foo() {
+    console.log("Hello Foo");
+}());
+
+(function food() {
+  console.log("Hello Food");
+})();
+
++function food() {
+  console.log("Hello Food");
+}();
+```
+
 
 ```js
 function ([param[, param]]) {
