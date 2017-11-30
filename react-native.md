@@ -3,34 +3,18 @@
 ```
 shell> mas install 497799835
 
-shell> brew cask install java
 shell> brew cask install java8
-shell> brew cask install android-sdk
 shell> brew cask install android-studio
 ```
 
 ```
-shell> touch ~/.android/repositories.cfg
-shell> sdkmanager --list
-shell> sdkmanager "system-images;android-25;google_apis;x86_64"
-shell> sdkmanager "system-images;android-24;default;x86"
-
-shell> avdmanager create avd -n test -k "system-images;android-25;google_apis;x86_64"
-Auto-selecting single ABI x86_64========] 100% Fetch remote repository...
-Do you wish to create a custom hardware profile? [no] no
-
-yes
-
-shell> avdmanager create avd -n test -k "system-images;android-24;default;x86"
-
 shell> avdmanager list avd
 
-shell> touch ~/.android/advancedFeatures.ini
-HVF = off
+shell> ${ANDROID_SDK_ROOT}/tools/emulator -help
+shell> ${ANDROID_SDK_ROOT}/tools/emulator -list-avds
 
-shell> emulator -help
-shell> emulator -list-avds
-shell> emulator @test
+shell> tools/emulator @Nexus_5X_API_27
+shell> tools/emulator @test
 ```
 
 ```
@@ -50,9 +34,11 @@ shell> react-native run-android
 `~/.bash_profile`
 
 ```
-export PATH="/usr/local/share/android-sdk/emulator:$PATH"
-export ANDROID_SDK_ROOT=/usr/local/share/android-sdk
-export ANDROID_HOME=/usr/local/share/android-sdk
+export ANDROID_HOME=~/Library/Android/sdk
+export ANDROID_SDK_ROOT=$ANDROID_HOME
+
+PATH="~/Library/Android/sdk/tools:~/Library/Android/sdk/platform-tools:${PATH}"
+export PATH
 ```
 
 #### :books: 參考網站：
@@ -61,6 +47,7 @@ export ANDROID_HOME=/usr/local/share/android-sdk
 - https://developer.android.com/studio/command-line/avdmanager.html
 - https://developer.android.com/studio/command-line/sdkmanager.html
 - https://facebook.github.io/react-native/docs/running-on-device.html
+- https://developer.android.com/studio/command-line/variables.html
 
 ---
 
@@ -80,6 +67,29 @@ export default class Bananas extends Component {
 }
 
 AppRegistry.registerComponent("MyApplication", () => Bananas);
+```
+
+---
+
+`index.js`
+```js
+import {AppRegistry} from "react-native";
+import App from "./App";
+
+AppRegistry.registerComponent("AwesomeProject", () => App);
+```
+
+```
+To run your app on iOS:
+   cd /Users/apple/Documents/MyApplication
+   react-native run-ios
+   - or -
+   Open ios/MyApplication.xcodeproj in Xcode
+   Hit the Run button
+To run your app on Android:
+   cd /Users/apple/Documents/MyApplication
+   Have an Android emulator running (quickest way to get started), or a device connected
+   react-native run-android
 ```
 
 ---
@@ -136,12 +146,27 @@ import { Card, ListItem, Button } from 'react-native-elements'
 ---
 
 ```
+shell> yarn add react-native-vector-icons --save && react-native link react-native-vector-icons
 shell> yarn add react-native-elements
 ```
 
 ```js
 "use strict";
-import { Text, Avatar, Button } from "react-native-elements";
+import React, {Component} from "react";
+import {Platform, StyleSheet, Text, View} from "react-native";
+import {Button} from "react-native-elements";
+import {Icon} from "react-native-elements";
+
+<Icon name="rowing" />
+<Icon name="g-translate" color="#00aced" />
+<Icon name="sc-telegram" type="evilicon" color="#517fa4" />
+<Icon
+  reverse
+  name="ios-american-football"
+  type="ionicon"
+  color="#517fa4"
+/>
+
 
 <Button title="BUTTON" />
 
@@ -157,6 +182,7 @@ import { Text, Avatar, Button } from "react-native-elements";
 ```
 
 #### :books: 參考網站：
+- https://react-native-training.github.io/react-native-elements/Installation/default_installation/
 - https://github.com/react-native-training/react-native-elements
 - https://react-native-training.github.io/react-native-elements/API/buttons/
 
@@ -399,12 +425,164 @@ List of devices attached
 
 
 
+---
+
+`Create React Native App`
+
+```
+shell> yarn global add create-react-native-app
+shell> create-react-native-app MyApplication
+shell> cd MyApplication
+shell> npm start
+shell> yarn start
+shell> yarn run ios
+shell> yarn run android
+
+shell> npm install -g exp
+```
+
+```
+import React from "react";
+import {StyleSheet, Text, View} from "react-native";
+
+export default class App extends React.Component {
+  render() {
+    return (
+      <View style={styles.container}>
+        <Text>Open up App.js to start working on your app!</Text>
+        <Text>Changes you make will automatically reload.</Text>
+        <Text>Shake your phone to open the developer menu.</Text>
+      </View>
+    );
+  }
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center"
+  }
+});
+```
+
+```
+import {Ionicons} from "@expo/vector-icons";
+import {Image} from "react-native";
+
+<Ionicons name="md-checkmark-circle" size={32} color="green" />
+```
+
+```js
+import React, {Component} from "react";
+import {Text, View, StyleSheet} from "react-native";
+import {Image} from "react-native";
+import {Constants} from "expo";
+
+// You can import from local files
+import AssetExample from "./components/AssetExample";
+
+// or any pure javascript modules available in npm
+import {Card} from "react-native-elements"; // 0.17.0
+
+export default class App extends Component {
+  render() {
+    return (
+      <View style={styles.container}>
+        <Text style={styles.paragraph}>
+          Change code in the editor and watch it change on your phone! Save to
+          get a shareable url.
+        </Text>
+        <Card title="Local Modules">
+          <AssetExample />
+        </Card>
+      </View>
+    );
+  }
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "center",
+    paddingTop: Constants.statusBarHeight,
+    backgroundColor: "#ecf0f1"
+  },
+  paragraph: {
+    margin: 24,
+    fontSize: 18,
+    fontWeight: "bold",
+    textAlign: "center",
+    color: "#34495e"
+  }
+});
+```
+
+- https://play.google.com/store/apps/details?id=host.exp.exponent
+- https://itunes.apple.com/us/app/expo-client/id982107779?mt=8
+- https://docs.expo.io/versions/latest/guides/building-standalone-apps.html
 
 
 
 
+```js
+import React from "react";
+import { Image, StyleSheet, View, StatusBar } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
+import { Image, StyleSheet, View, StatusBar } from "react-native";
+import { Text, View, TouchableOpacity } from "react-native";
+import { Camera, Permissions } from "expo";
+import { BlurView } from "expo";
+import { BlurView } from "expo";
+import { Contacts } from "expo";
+import { Asset, AppLoading } from "expo";
+import { Button, StyleSheet, Text, View } from "react-native";
+import { AuthSession } from "expo";
+import { BarCodeScanner, Permissions } from "expo";
+import Expo from "expo";
+import { Accelerometer } from "expo";
+import {
+  AdMobBanner,
+  AdMobInterstitial,
+  PublisherBanner,
+  AdMobRewarded
+} from "expo";
+
+import { Image, Text, View } from "react-native";
+
+```
+
+---
+
+Running your app on Android devices 
+
+1. Enable Debugging over USB 
+2. Plug in your device via USB 
+
+```
+$ adb devices
+List of devices attached
+emulator-5554 offline   # Google emulator
+14ed2fcc device         # Physical device
+
+List of devices attached
+VCLVUC4DAUPZHIGY	device
+```
+
+```
+shell> react-native init MyApplication
+shell> cd MyApplication
+shell> react-native run-android
+shell> react-native run-android --deviceId VCLVUC4DAUPZHIGY
+```
 
 
+
+
+- [running-on-device](https://facebook.github.io/react-native/docs/running-on-device.html)
 
 
 

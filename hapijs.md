@@ -15,22 +15,23 @@ shell> npm install hapi --save
 建立名為 `server.js` 的檔案，並新增下列程式碼：
 
 ```js
-'use strict';
+"use strict";
 
-const Hapi = require('hapi');
+const Hapi = require("hapi");
 
-const server = new Hapi.Server();
-server.connection({
-  port: 3000,
-  host: 'localhost'
+const server = new Hapi.Server({
+  host: "localhost",
+  port: 8000
 });
 
-server.start((err) => {
-  if (err) {
-    throw err;
+(async () => {
+  try {
+    await server.start();
+    console.log(`Server running at: ${server.info.uri}`);
+  } catch (err) {
+    console.log(err);
   }
-  console.log(`Server running at: ${server.info.uri}`);
-});
+})();
 ```
 
 使用下列指令來執行應用程式：
@@ -64,26 +65,27 @@ handler 是當路由相符時要執行的函數。
 
 const Hapi = require('hapi');
 
-const server = new Hapi.Server();
-server.connection({
-  port: 3000,
-  host: 'localhost'
+const server = new Hapi.Server({
+  host: "localhost",
+  port: 8000
 });
 
 server.route({
-  method: 'GET',
-  path: '/',
-  handler: function(request, reply) {
-    reply('Hello World!');
+  method: "GET",
+  path: "/",
+  handler: (request, h) => {
+    return "Hello, world!";
   }
 });
 
-server.start((err) => {
-  if (err) {
-    throw err;
+(async () => {
+  try {
+    await server.start();
+    console.log(`Server running at: ${server.info.uri}`);
+  } catch (err) {
+    console.log(err);
   }
-  console.log(`Server running at: ${server.info.uri}`);
-});
+})();
 ```
 
 ```js
@@ -137,19 +139,28 @@ const Good = require('good');
 const server = new Hapi.Server();
 server.connection({ port: 3000, host: 'localhost' });
 
+
 server.route({
-  method: 'GET',
-  path: '/',
-  handler: function(request, reply) {
-    reply('Hello, world!');
+  method: "GET",
+  path: "/hello",
+  handler: (request, h) => {
+    return "hello world";
+  }
+});
+
+server.route({
+  method: "GET",
+  path: "/{name}",
+  handler: (request, h) => {
+    return `Hello, ${encodeURIComponent(request.params.name)}!`;
   }
 });
 
 server.route({
   method: 'GET',
-  path: '/{name}',
+  path: '/',
   handler: function(request, reply) {
-    reply('Hello, ' + encodeURIComponent(request.params.name) + '!');
+    reply('Hello, world!');
   }
 });
 
